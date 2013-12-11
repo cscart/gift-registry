@@ -1,0 +1,1 @@
+{$company_data.company_name nofilter}: {__("access_event_key_request_subj")}

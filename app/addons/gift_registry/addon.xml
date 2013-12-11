@@ -1,0 +1,454 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>gift_registry</id>
+    <name>Gift registry</name>
+    <description><![CDATA[<i><strong>Deprecated</strong>. To be excluded from v. 4.1.1. Learn more in the <a href="http://forum.cs-cart.com/topic/33444-some-add-ons-to-be-excluded-from-cs-cart-411/">official announcement</a>.</i>]]></description>
+    <version>1.0</version>
+    <priority>1000</priority>
+    <position>45</position>
+    <status>active</status>
+    <default_language>en</default_language>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Liste de souhaits</item>
+        <item for="name" lang="da">Gaveliste</item>
+        <item for="name" lang="el">Λίστα επιθυμητών αγορών</item>
+        <item for="name" lang="ro">Registru de cadou</item>
+        <item for="name" lang="ru">События</item>
+        <item for="name" lang="sl">Register daril</item>
+        <item for="name" lang="zh">礼品登记</item>
+        <item for="description" lang="ru"><![CDATA[<i><strong>Устаревший модуль</strong>. Данный модуль будет исключен из базовой поставки, начиная с версии 4.1.1. Узнайте больше в <a href="http://forum.cs-cart.com/topic/33444-some-add-ons-to-be-excluded-from-cs-cart-411/">официальном анонсе</a>.</i>]]></item>
+        <item for="description" lang="zh">让我们的客户创建事件,邀请嘉宾,整理自己和别人的礼物愿望清单</item>
+    </translations>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="event_creators">
+                        <name>Event can be created by</name>
+                        <type>selectbox</type>
+                        <default_value>registered</default_value>
+                        <variants>
+                            <item id="all">
+                                <name>All customers</name>
+                                <translations>
+                                    <item lang="es">Todos los clientes</item>
+                                    <item lang="fr">Tous les clients</item>
+                                    <item lang="el">Όλοι οι πελάτες</item>
+                                    <item lang="ro">Toți clienții</item>
+                                    <item lang="ru">Любые посетители</item>
+                                    <item lang="sl">Vse stranke</item>
+                                    <item lang="zh">所有客户</item>
+                                </translations>
+                            </item>
+                            <item id="registered">
+                                <name>Registered customers</name>
+                                <translations>
+                                    <item lang="es">Clientes registrados</item>
+                                    <item lang="fr">Clients enregistrés</item>
+                                    <item lang="el">Εγγεγραμμένοι πελάτες</item>
+                                    <item lang="ro">Clienții înregistrați</item>
+                                    <item lang="ru">Только зарегистрированные покупатели</item>
+                                    <item lang="sl">Registrirane  stranke</item>
+                                    <item lang="zh">注册的客户</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">El evento puede ser creado por</item>
+                            <item lang="fr">Un événement peut être crée par</item>
+                            <item lang="da">Event kan skabes af</item>
+                            <item lang="el">Γεγονός που  μπορεί να δημιουργηθεί από</item>
+                            <item lang="ro">Un eveniment poate fi creat de către</item>
+                            <item lang="ru">События могут регистрировать</item>
+                            <item lang="sl">Dogodek je lahko ustvarjen z</item>
+                            <item lang="zh">创建事件可由</item>
+                        </translations>
+                    </item>
+                    <item id="events_in_sidebox">
+                        <name>Number of items in Events sidebox</name>
+                        <type>input</type>
+                        <default_value>2</default_value>
+                        <translations>
+                            <item lang="es">Número de elementos en el panel de Eventos</item>
+                            <item lang="fr">Nombre d'items dans le menu "Evénements"</item>
+                            <item lang="da">Antal poster i Events sidebox</item>
+                            <item lang="el">Αριθμός τεμαχίων στην πλευρική στήλη γεγονότων</item>
+                            <item lang="ro">Numărul de prooduse în căsuța de evenimente</item>
+                            <item lang="ru">Количество записей в "События"</item>
+                            <item lang="sl">Število elementov v polju dogodkov</item>
+                            <item lang="zh">事件侧栏中项目数量</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:giftreg_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_event_fields;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_event_products;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_event_subscribers;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_events;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_field_variants;</item>
+        <item>DROP TABLE IF EXISTS ?:giftreg_fields;</item>
+        <item>CREATE TABLE `?:giftreg_descriptions` (
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `description` varchar(255) NOT NULL default '',
+                `object_type` char(1) NOT NULL default 'F',
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`object_id`,`object_type`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_event_fields` (
+                `event_id` mediumint(8) unsigned NOT NULL default '0',
+                `field_id` mediumint(8) unsigned NOT NULL default '0',
+                `value` text NOT NULL,
+            PRIMARY KEY  (`event_id`,`field_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_event_products` (
+                `item_id` int(11) unsigned NOT NULL default '0',
+                `event_id` mediumint(8) unsigned NOT NULL default '0',
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` smallint(5) unsigned NOT NULL default '0',
+                `ordered_amount` smallint(5) unsigned NOT NULL default '0',
+                `extra` text NOT NULL,
+                PRIMARY KEY  (`item_id`,`event_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_event_subscribers` (
+                `event_id` mediumint(8) unsigned NOT NULL default '0',
+                `name` varchar(128) NOT NULL default '',
+                `email` varchar(64) NOT NULL default '',
+                PRIMARY KEY  (`event_id`,`email`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_events` (
+                `event_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `user_id` mediumint(8) unsigned NOT NULL default '0',
+                `start_date` int(11) unsigned NOT NULL default '0',
+                `end_date` int(11) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'A',
+                `type` char(1) NOT NULL default 'P',
+                `title` varchar(255) NOT NULL default '',
+                `owner` varchar(128) NOT NULL default '',
+                `email` varchar(64) NOT NULL default '',
+                `company_id` int(11) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`event_id`),
+                KEY `start_date` (`start_date`,`end_date`,`type`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_field_variants` (
+                `variant_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `field_id` mediumint(8) unsigned NOT NULL default '0',
+                `position` smallint(5) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`variant_id`),
+                KEY `field_id` (`field_id`),
+                KEY `position` (`position`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:giftreg_fields` (
+                `field_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `field_type` char(1) NOT NULL default 'I',
+                `position` smallint(5) unsigned NOT NULL default '0',
+                `required` char(1) NOT NULL default 'N',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY  (`field_id`),
+                KEY `position` (`position`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('view_events', 'Y', 'addons');</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('manage_events', 'Y', 'addons');</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'view_events' OR privilege LIKE 'manage_events'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_event_fields;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_event_products;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_event_subscribers;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_events;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_field_variants;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:giftreg_fields;</item>
+    </queries>
+    <language_variables>
+        <item id="add_event" lang="en">Add event</item>
+        <item id="add_event" lang="ru">Добавить событие</item>
+        <item id="add_event" lang="zh">添加事件</item>
+        <item id="add_event" lang="it">Aggiungi evento</item>
+        <item id="add_event" lang="el">Προσθήκη εκδηλώσεις</item>
+        <item id="add_event" lang="bg">Добави събитие</item>
+        <item id="add_event" lang="ro">Adăugați un eveniment</item>
+        <item id="add_event" lang="sl">Dodaj dogodek</item>
+        <item id="add_event" lang="da">Tilføj begivenhed</item>
+        <item id="add_event" lang="fr">Ajouter un évènement</item>
+        <item id="add_event" lang="es">Añadir evento"</item>
+        <item id="add_event" lang="no">Legg til begivenhet</item>
+
+        <item id="delete_this_event" lang="en">Delete this event</item>
+        <item id="delete_this_event" lang="ru">Удалить событие</item>
+        <item id="delete_this_event" lang="zh">删除这个事件</item>
+        <item id="delete_this_event" lang="it">Elimina questo evento</item>
+        <item id="delete_this_event" lang="el">Διαγραφή αυτού του γεγονότος</item>
+        <item id="delete_this_event" lang="bg">Добави събитие</item>
+        <item id="delete_this_event" lang="ro">Ștergeți acest eveniment</item>
+        <item id="delete_this_event" lang="sl">Izbriši dogodek</item>
+        <item id="delete_this_event" lang="da">Slet denne begivenhed</item>
+        <item id="delete_this_event" lang="fr">Supprimer cet évènement</item>
+        <item id="delete_this_event" lang="es">Borrar este evento</item>
+        <item id="delete_this_event" lang="no">Slett denne begivenheten</item>
+
+        <item id="editing_event" lang="en">Editing event</item>
+        <item id="editing_event" lang="ru">Редактирование события</item>
+        <item id="editing_event" lang="zh">编辑事件</item>
+        <item id="editing_event" lang="it">Modifica evento</item>
+        <item id="editing_event" lang="el">Επεξεργασία γεγονότος</item>
+        <item id="editing_event" lang="bg">Редактиране на събитие</item>
+        <item id="editing_event" lang="ro">Editare eveniment</item>
+        <item id="editing_event" lang="sl">Urejanje dogodka</item>
+        <item id="editing_event" lang="da">redigere begivenhed</item>
+        <item id="editing_event" lang="fr">Édition d'un évènement</item>
+        <item id="editing_event" lang="no">Redigerer begivenhet</item>
+
+        <item id="enter_private_event" lang="en">Enter to private event</item>
+        <item id="enter_private_event" lang="ru">Просмотреть личное событие</item>
+        <item id="enter_private_event" lang="zh">进入私人事件</item>
+        <item id="enter_private_event" lang="it">Inserire un evento privato</item>
+
+        <item lang="en" id="private_events">Private events</item>
+        <item lang="ru" id="private_events">Личные события</item>
+        <item lang="zh" id="private_events">私人事件</item>
+        <item lang="it" id="private_events">Eventi privati</item>
+        <item lang="el" id="private_events">Ιδιωτικές εκδηλώσεις</item>
+        <item lang="bg" id="private_events">Лични събития</item>
+        <item lang="ro" id="private_events">Evenimente private</item>
+        <item lang="sl" id="private_events">Zasebni dogodki</item>
+        <item lang="no" id="private_events">Private begivenheter</item>
+        <item lang="da" id="private_events">Privat begivenhed</item>
+        <item lang="fr" id="private_events">Évènements privés</item>
+        <item lang="es" id="private_events">Eventos privados</item>
+        <item lang="en" id="text_enter_access_key">Please enter the access key to see the event details</item>
+        <item lang="ru" id="text_enter_access_key">Пожалуйста, введите код доступа для получения разрешения на вход в Событие</item>
+        <item lang="zh" id="text_enter_access_key">请输入访问密钥来查看事件的详情</item>
+        <item lang="it" id="text_enter_access_key">Si prega di inserire la chiave di accesso per vedere i dettagli dell'evento</item>
+        <item lang="el" id="text_enter_access_key">Παρακαλώ εισάγετε το κλειδί πρόσβασης για να δείτε τις λεπτομέρειες του συμβάντος</item>
+        <item lang="bg" id="text_enter_access_key">Моля, въведете ключа за достъп, за да видите подробностите за събитието</item>
+        <item lang="ro" id="text_enter_access_key">Vă rugăm să introduceți cheia de acces pentru obțineți admiterea la eveniment</item>
+        <item lang="sl" id="text_enter_access_key">Prosimo, da vnesete dostopni ključ, za dostop do dogodka</item>
+        <item lang="no" id="text_enter_access_key">Vennligst skriv inn adgangsnøkkel for å se detaljer for begivenheten</item>
+        <item lang="da" id="text_enter_access_key">Indtast venligst adgang nøglen til at få indrejse til begivenheden</item>
+        <item lang="fr" id="text_enter_access_key">Veuillez saisir spv la clé pour avoir accès à cet événement</item>
+        <item lang="es" id="text_enter_access_key">Por favor entre en la llave de acceso para obtener acceso al evento</item>
+        <item lang="en" id="gift_registry">Gift registry</item>
+        <item lang="fr" id="gift_registry">Liste de souhaits</item>
+        <item lang="da" id="gift_registry">Gaveliste</item>
+        <item lang="el" id="gift_registry">Λίστα επιθυμητών αγορών</item>
+        <item lang="ro" id="gift_registry">Registru de cadou</item>
+        <item lang="ru" id="gift_registry">События</item>
+        <item lang="ru" id="privileges.view_events">Просмотр событий</item>
+        <item lang="ru" id="privileges.manage_events">Управление событиями</item>
+        <item lang="sl" id="gift_registry">Register daril</item>
+        <item lang="zh" id="gift_registry">礼品注册</item>
+        <item lang="en" id="get_access_key_title">Get access key</item>
+        <item lang="en" id="gift_registry_key">Gift registry access key</item>
+        <item lang="en" id="block_gift_registry_key">Get event access key</item>
+        <item lang="en" id="block_gift_registry">Gift registry menu</item>
+        <item lang="en" id="block_gift_registry_key_description">Event access key request field</item>
+        <item lang="en" id="block_gift_registry_description">Events management menu</item>
+        <item lang="en" id="giftregistry_key">Gift registry key</item>
+        <item lang="en" id="privileges.view_events">View events</item>
+        <item lang="en" id="privileges.manage_events">Manage events</item>
+        <item lang="ru" id="block_gift_registry">Меню событий</item>
+        <item lang="ru" id="block_gift_registry_description">Меню управления событиями</item>
+        <item lang="ru" id="block_gift_registry_key">Получить ключ для доступа к событиям</item>
+        <item lang="ru" id="block_gift_registry_key_description">Запрос ключа для доступа к событиям</item>
+        <item lang="ru" id="get_access_key_title">Получить ключ доступа</item>
+        <item lang="ru" id="gift_registry_key">Ключ доступа</item>
+        
+        <item lang="zh" id="get_access_key_title">获取访问钥匙</item>
+        <item lang="zh" id="gift_registry_key">礼品注册访问钥匙</item>
+        <item lang="zh" id="block_gift_registry_key">获取事件访问钥匙</item>
+        <item lang="zh" id="block_gift_registry">礼品注册菜单</item>
+        <item lang="zh" id="block_gift_registry_key_description">事件访问钥匙申请区域</item>
+        <item lang="zh" id="block_gift_registry_description">事件管理菜单</item>
+        <item lang="zh" id="giftregistry_key">礼品注册钥匙</item>
+        <item lang="en" id="error_giftreg_email_not_found">The e-mail address you entered was not found in Gift Registry</item>
+        <item lang="en" id="notifications">Notifications</item>
+        <item lang="en" id="error_invalid_access_key">Invalid access key</item>
+        <item lang="en" id="text_event_unsubscribe">You've been successfully unsubscribed from the event mail list.</item>
+        <item lang="en" id="custom_event_fields">Custom event fields</item>
+        <item lang="en" id="list_of_event_invitees">List of event invitees</item>
+        <item lang="en" id="new_event">New event</item>
+        <item lang="en" id="event">Event</item>
+        <item lang="en" id="text_your_events">Events you created</item>
+        <item lang="en" id="text_events_you_subscribed">Private events you are subscribed to</item>
+        <item lang="en" id="access_event_key_request_subj">Request for event access key</item>
+        <item lang="en" id="text_event_subscriber">[owner] has invited you to join his/her Gift Registry.</item>
+        <item lang="en" id="view_event_details">View event details</item>
+        <item lang="en" id="event_notification_subj">Event notification</item>
+
+        <item lang="bg" id="error_giftreg_email_not_found">Е-мейл адресът, който сте въвели не беше намерен</item>
+        <item lang="bg" id="notifications">Известия</item>
+        <item lang="bg" id="error_invalid_access_key">Невалиден ключ за достъп</item>
+        <item lang="bg" id="text_event_unsubscribe">Вие успешно се отписахте от пощенския списък на събитията.</item>
+        <item lang="bg" id="custom_event_fields">Допълнително поле за събития</item>
+        <item lang="bg" id="list_of_event_invitees">Списък на поканените на събитието</item>
+        <item lang="bg" id="new_event">Ново събитие</item>
+        <item lang="bg" id="event">събитие</item>
+        <item lang="bg" id="text_your_events">Вашите събития</item>
+        <item lang="bg" id="text_events_you_subscribed">Лични събития, към които сте се абонирали</item>
+        <item lang="bg" id="access_event_key_request_subj">Заявка за ключ за достъп</item>
+        <item lang="bg" id="text_event_subscriber">[owner] Ви е поканил да се присъедините към неговия / нейния регистър за подаръци.</item>
+        <item lang="bg" id="view_event_details">Вижте подробности за събитието</item>
+        <item lang="bg" id="event_notification_subj">Нотификация за събитие</item>
+
+        <item lang="da" id="error_giftreg_email_not_found">Den e-mail-adresse, du indtastede blev ikke fundet i Gaveliste</item>
+        <item lang="da" id="notifications">Meddelelse</item>
+        <item lang="da" id="error_invalid_access_key">Den access key du indtastede er ugyldig</item>
+        <item lang="da" id="text_event_unsubscribe">Du er blevet afmeldt fra begivenheden mail-liste.</item>
+        <item lang="da" id="custom_event_fields">Custom begivenhed felter</item>
+        <item lang="da" id="list_of_event_invitees">Liste over begivenhed inviterede</item>
+        <item lang="da" id="new_event">Nyt event</item>
+        <item lang="da" id="event">Begivenhed</item>
+        <item lang="da" id="text_your_events">Begivenheder, som du oprettede</item>
+        <item lang="da" id="text_events_you_subscribed">Private arrangementer du er tilmeldt</item>
+        <item lang="da" id="access_event_key_request_subj">Anmod om event access key</item>
+        <item lang="da" id="text_event_subscriber">[owner] har inviteret dig til at deltage i hans / hendes gaveliste.</item>
+        <item lang="da" id="view_event_details">Vis oplysninger om begivenhed\n</item>
+        <item lang="da" id="event_notification_subj">Begivenhed meddelelse</item>
+
+        <item lang="el" id="error_giftreg_email_not_found">Η διεύθυνση e-mail που δώσατε δεν βρέθηκε στο μητρώο δώρων.</item>
+        <item lang="el" id="notifications">Ειδοποιήσεις</item>
+        <item lang="el" id="error_invalid_access_key">Άκυρο κλειδί πρόσβασης</item>
+        <item lang="el" id="text_event_unsubscribe">Έχετε διαγραφεί επιτυχώς από τη λίστα  εκδήλώσεων ηλεκτρονικού ταχυδρομείου.</item>
+        <item lang="el" id="custom_event_fields">Προσαρμοσμένα πεδία γεγονότων</item>
+        <item lang="el" id="list_of_event_invitees">Λίστα των προσκεκλημένων εκδηλώσεων</item>
+        <item lang="el" id="new_event">Νέο γεγονός</item>
+        <item lang="el" id="event">Γεγονός</item>
+        <item lang="el" id="text_your_events">Γεγονότα που δημιουργήσατε</item>
+        <item lang="el" id="text_events_you_subscribed">Ιδιωτικές εκδηλώσεις είστε που είστε συνδρομητής</item>
+        <item lang="el" id="access_event_key_request_subj">Αίτηση για κλειδί πρόσβασης</item>
+        <item lang="el" id="text_event_subscriber">[owner]σας έχει προσκαλέσει να συμμετάσχετε στην δωροεπιταγή του/της.</item>
+        <item lang="el" id="view_event_details">Προβολή λεπτομερειών γεγονότος </item>
+        <item lang="el" id="event_notification_subj">Κοινοποίηση γεγονότος</item>
+
+        <item lang="es" id="error_giftreg_email_not_found">La dirección de E-mail en la que usted entró no fue encontrada en el Registro de Regalos</item>
+        <item lang="es" id="notifications">Notificaciones</item>
+        <item lang="es" id="error_invalid_access_key">La clave de acceso introducida es inválida</item>
+        <item lang="es" id="text_event_unsubscribe">Usted ha sido eliminado con  éxito de la lista de correo de eventos.</item>
+        <item lang="es" id="event">Evento</item>
+        <item lang="es" id="text_your_events">Eventos que usted creó</item>
+        <item lang="es" id="text_events_you_subscribed">Eventos privados a los que usted se suscribió</item>
+        <item lang="es" id="text_event_subscriber">Has sido invitado por [owner] para participación en su Certificado de Regalo.</item>
+        <item lang="es" id="view_event_details">Detalles de eventos de visitas</item>
+        <item lang="es" id="event_notification_subj">Notificación de evento</item>
+
+        <item lang="fr" id="error_giftreg_email_not_found">L'adresse email saisie n'a pas été trouvée dans la liste de cadeaux</item>
+        <item lang="fr" id="error_invalid_access_key">La clé d'accès saisie est invalide</item>
+        <item lang="fr" id="text_event_unsubscribe">Vous avez été désinscrit avec succès de la mailing liste de l'évènement.</item>
+        <item lang="fr" id="custom_event_fields">Champs évènement personnalisés</item>
+        <item lang="fr" id="new_event">Nouvel Évènement</item>
+        <item lang="fr" id="event">Évènement</item>
+        <item lang="fr" id="text_your_events">Évènements que vous avez crées</item>
+        <item lang="fr" id="text_events_you_subscribed">Évènements privés auxquels vous êtes inscrit</item>
+        <item lang="fr" id="access_event_key_request_subj">Demande de la clé d'accès d'évènement</item>
+        <item lang="fr" id="text_event_subscriber">Vous avez reçu une invitation de [owner] pour la participation dans liste de cadeaux. Votre adresse email a été incluse dans la mailing liste pour cet évènement.</item>
+        <item lang="fr" id="view_event_details">Voir détails évènement</item>
+        <item lang="fr" id="event_notification_subj">Notification d'évènement</item>
+
+        <item lang="it" id="error_giftreg_email_not_found">L'indirizzo email che hai inserito non è stato trovato nella lista dei regali.</item>
+        <item lang="it" id="notifications">Notifiche</item>
+        <item lang="it" id="error_invalid_access_key">Codice d'accesso non valido</item>
+        <item lang="it" id="text_event_unsubscribe">Sei stato correttamente cancellato dalla mailing list degli eventi.\n</item>
+        <item lang="it" id="custom_event_fields">Campi eventi personalizzati</item>
+        <item lang="it" id="list_of_event_invitees">Lista degli invitati all'evento</item>
+        <item lang="it" id="new_event">Nuovo evento</item>
+        <item lang="it" id="event">Evento</item>
+        <item lang="it" id="text_your_events">Eventi creati</item>
+        <item lang="it" id="text_events_you_subscribed">Eventi privati ​​sottoscritti a</item>
+        <item lang="it" id="access_event_key_request_subj">Richiesta chiave di accesso evento.</item>
+        <item lang="it" id="text_event_subscriber">[owner] ti ha invitato a unirsi alla sua / il suo Lista Regali.</item>
+        <item lang="it" id="view_event_details">Visualizza dettagli evento</item>
+        <item lang="it" id="event_notification_subj">Notifica evento</item>
+
+        <item lang="no" id="error_giftreg_email_not_found">E-postadressen du oppga ble ikke funnet i Gaveregisteret</item>
+        <item lang="no" id="notifications">Varsler</item>
+        <item lang="no" id="error_invalid_access_key">Ugyldig adgangsnøkkel</item>
+        <item lang="no" id="text_event_unsubscribe">Du har blitt meldt fra begivenhetens e-postliste.</item>
+        <item lang="no" id="custom_event_fields">Egendefinerte begivenhetsfelter</item>
+        <item lang="no" id="list_of_event_invitees">Liste over inviterte til begivenheten</item>
+        <item lang="no" id="new_event">Ny begivenhet</item>
+        <item lang="no" id="event">Begivenhet</item>
+        <item lang="no" id="text_your_events">Begivenheter du har opprettet</item>
+        <item lang="no" id="text_events_you_subscribed">Private begivenheter du abonnerer på</item>
+        <item lang="no" id="access_event_key_request_subj">Forespørsel om adgangsnøkkel for begivenhet</item>
+        <item lang="no" id="text_event_subscriber">[owner] har invitert deg til å bli med hans/hennes Gaveregister.</item>
+        <item lang="no" id="view_event_details">Vis begivenhetens detaljer</item>
+        <item lang="no" id="event_notification_subj">Begivenhetsvarsling</item>
+
+        <item lang="ro" id="error_giftreg_email_not_found">Adresa de e-mail pe care ați introdus-o nu a fost găsit în registru de cadouri [promoții]</item>
+        <item lang="ro" id="notifications">Notificările</item>
+        <item lang="ro" id="error_invalid_access_key">Cheia de acces care ați introdus-o este invalidă</item>
+        <item lang="ro" id="text_event_unsubscribe">Ați fost dezabonat cu succes de pe lista evenimentelor trimise prin e-mail.</item>
+        <item lang="ro" id="custom_event_fields">Câmpuri de eveniment customizate</item>
+        <item lang="ro" id="list_of_event_invitees">Lista cu evenimente referitoare la invitații</item>
+        <item lang="ro" id="new_event">Eveniment nou</item>
+        <item lang="ro" id="event">Eveniment</item>
+        <item lang="ro" id="text_your_events">Evenimente create de dvs.</item>
+        <item lang="ro" id="text_events_you_subscribed">Evenimentele private cărora le sunteți abonat</item>
+        <item lang="ro" id="access_event_key_request_subj">Cerere cheie de acces pentru eveniment</item>
+        <item lang="ro" id="text_event_subscriber">[owner] v-a invitat să vă alăturați Registrului de bonuri al lui/ei.</item>
+        <item lang="ro" id="view_event_details">Vezi detalii eveniment</item>
+        <item lang="ro" id="event_notification_subj">Notificare eveniment</item>
+
+        <item lang="ru" id="error_giftreg_email_not_found">Введенный e-mail не найден в Событиях</item>
+        <item lang="ru" id="notifications">Уведомления</item>
+        <item lang="ru" id="error_invalid_access_key">Введенный ключ доступа недействителен</item>
+        <item lang="ru" id="text_event_unsubscribe">Вы были успешно отписаны от рассылки событий.</item>
+        <item lang="ru" id="custom_event_fields">Дополнительные поля событий</item>
+        <item lang="ru" id="list_of_event_invitees">Список приглашенных на событие</item>
+        <item lang="ru" id="new_event">Новое событие</item>
+        <item lang="ru" id="event">Событие</item>
+        <item lang="ru" id="text_your_events">Ваши события</item>
+        <item lang="ru" id="text_events_you_subscribed">Персональные события, на которые Вы подписаны</item>
+        <item lang="ru" id="access_event_key_request_subj">Запрос ключа события</item>
+        <item lang="ru" id="text_event_subscriber">[owner] пригласил принять вас участие в его/её Событии.</item>
+        <item lang="ru" id="view_event_details">Показать детали события</item>
+        <item lang="ru" id="event_notification_subj">Уведомление о событии</item>
+
+        <item lang="sl" id="error_giftreg_email_not_found">Elektronskega naslova, ki ste ga vnesli ni v registru daril.</item>
+        <item lang="sl" id="notifications">Obvestila</item>
+        <item lang="sl" id="error_invalid_access_key">Dostopni ključ, ki ste ga vnesli, je napačen.</item>
+        <item lang="sl" id="text_event_unsubscribe">Uspešno ste bili odnaročeni z elektronske liste obveščanja o dogodkih</item>
+        <item lang="sl" id="custom_event_fields">Polja dogodkov po meri</item>
+        <item lang="sl" id="list_of_event_invitees">Seznam dogodkov povabljenih</item>
+        <item lang="sl" id="new_event">Nov dogodek</item>
+        <item lang="sl" id="event">Dogodek</item>
+        <item lang="sl" id="text_your_events">Dogodki, ki ste jih ustvarili</item>
+        <item lang="sl" id="text_events_you_subscribed">Zasebni dogodki na katere ste se naročili</item>
+        <item lang="sl" id="access_event_key_request_subj">Zahteva za dostopni ključ dogodka</item>
+        <item lang="sl" id="text_event_subscriber">[owner] vas je povabil, da sodelujete, v njegovem/njenem registru daril.</item>
+        <item lang="sl" id="view_event_details">Oglej si podrobnosti dogodka</item>
+        <item lang="sl" id="event_notification_subj">Obvestilo o dogodku</item>
+
+        <item lang="zh" id="error_giftreg_email_not_found">您输入的电子邮件地址在礼品登记中没有找到</item>
+        <item lang="zh" id="notifications">通知</item>
+        <item lang="zh" id="error_invalid_access_key">访问密匙无效</item>
+        <item lang="zh" id="text_event_unsubscribe">您已经成功从事件邮件列表取消订阅.</item>
+        <item lang="zh" id="custom_event_fields">自定义事件字段</item>
+        <item lang="zh" id="list_of_event_invitees">事件列表的邀请</item>
+        <item lang="zh" id="new_event">新事件</item>
+        <item lang="zh" id="event">事件</item>
+        <item lang="zh" id="text_your_events">您创建的事件</item>
+        <item lang="zh" id="text_events_you_subscribed">您已订阅的私人事件</item>
+        <item lang="zh" id="access_event_key_request_subj">请求事件访问密匙</item>
+        <item lang="zh" id="text_event_subscriber">[owner]邀请您参加他/她的礼品登记.</item>
+        <item lang="zh" id="view_event_details">查看事件详情</item>
+        <item lang="zh" id="event_notification_subj">事件通知</item>
+    </language_variables>
+</addon>
