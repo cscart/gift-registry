@@ -220,6 +220,198 @@
         <item id="enter_private_event" lang="zh">进入私人事件</item>
         <item id="enter_private_event" lang="it">Inserire un evento privato</item>
 
+        <item id="update_event" lang="en">Update event</item>
+        <item id="update_event" lang="ru">Обновить событие</item>
+        <item id="update_event" lang="zh">更新事件</item>
+        <item id="update_event" lang="it">Aggiorna evento</item>
+        <item id="update_event" lang="el">Ενημέρωση γεγονότος</item>
+        <item id="update_event" lang="bg">Обнови събитие</item>
+        <item id="update_event" lang="ro">Actualizați eveniment</item>
+        <item id="update_event" lang="sl">Osveži dogodek</item>
+        <item id="update_event" lang="no">Oppdater begivenhet</item>
+        <item id="update_event" lang="da">Opdater begivenhed</item>
+        <item id="update_event" lang="fr">Mise à jour évènement</item>
+        <item id="update_event" lang="es">Actualizar evento</item>
+
+        <item id="view_events" lang="en">View events</item>
+        <item id="view_events" lang="ru">Просмотреть события</item>
+        <item id="view_events" lang="zh">查看事件</item>
+        <item id="view_events" lang="it">Visualizza eventi</item>
+
+        <item id="events" lang="en">Events</item>
+        <item id="events" lang="ru">События</item>
+        <item id="events" lang="zh">活动事件</item>
+        <item id="events" lang="it">Eventi</item>
+        <item id="events" lang="el">Γεγονότα</item>
+        <item id="events" lang="bg">събития</item>
+        <item id="events" lang="ro">Eveniment</item>
+        <item id="events" lang="sl">Dogodki</item>
+        <item id="events" lang="no">Begivenheter</item>
+        <item id="events" lang="da">Begivenhed</item>
+        <item id="events" lang="fr">Évènements</item>
+        <item id="events" lang="es">Eventos</item>
+
+        <item id="events_list" lang="en">List of invitees</item>
+        <item id="events_list" lang="ru">Список приглашений</item>
+        <item id="events_list" lang="zh">被邀请的名单</item>
+        <item id="events_list" lang="it">Lista degli eventi.</item>
+
+        <item id="events_menu_description" lang="en">Create new customer events and edit the existing ones.</item>
+        <item id="events_menu_description" lang="ru">Создание и редактирование пользовательских событий.</item>
+        <item id="events_menu_description" lang="zh">新建客户活动事件和对现有的进行编辑.</item>
+        <item id="events_menu_description" lang="it">Crea nuovi eventi cliente e modifica quelli già esistenti.</item>
+        <item id="events_menu_description" lang="el">Δημιουργήστε νέες εκδηλώσεις πελατών και επεξεργαστείται τις υπάρχον.</item>
+        <item id="events_menu_description" lang="bg">Създаване на нови събития, клиенти и редактиране на вече съществуващите.</item>
+
+        <item id="event_add" lang="en">Add new event</item>
+        <item id="event_add" lang="ru">Добавить событие</item>
+        <item id="event_add" lang="zh">添加新事件</item>
+        <item id="event_add" lang="it">Aggiungi un nuovo evento</item>
+
+        <item id="event_fields" lang="en">custom event fields</item>
+        <item id="event_fields" lang="ru">дополнительные поля события</item>
+        <item id="event_fields" lang="zh">自定义事件域</item>
+        <item id="event_fields" lang="it">Campi evento speciale.</item>
+        <item id="event_fields" lang="el">Πεδία προσαρμοσμένων εκδηλώσεων</item>
+        <item id="event_fields" lang="bg">допълнително поле събития</item>
+        <item id="event_fields" lang="ro">câmpuri de eveniment particularizate</item>
+        <item id="event_fields" lang="sl">polja za dogodke po meri</item>
+        <item id="event_fields" lang="no">egendefinerte begivenhetsfelter</item>
+        <item id="event_fields" lang="da">brugerdefinerede begivenhed felter</item>
+        <item id="event_fields" lang="fr">champs évènement personnalisé</item>
+
+        <item id="event_type" lang="en">Type</item>
+        <item id="event_type" lang="ru">Тип</item>
+        <item id="event_type" lang="zh">类型</item>
+        <item id="event_type" lang="it">Carattere</item>
+        <item id="event_type" lang="el">Τύπος</item>
+        <item id="event_type" lang="bg">Тип</item>
+        <item id="event_type" lang="ro">Tipul</item>
+        <item id="event_type" lang="sl">Tip</item>
+        <item id="event_type" lang="es">Tipo</item>
+
+        <item id="text_gr_desired_products" lang="en">In this section you can define products which you wish to be purchased by the event invitees.</item>
+        <item id="text_gr_desired_products" lang="ru">В этом разделе Вы можете задать товары, которые хотели бы получить от приглашенных на ваше событие.</item>
+        <item id="text_gr_desired_products" lang="zh">在这部分您可以定义经活动邀请而想购买的产品.</item>
+        <item id="text_gr_desired_products" lang="it">In questa sezione è possibile definire i prodotti che si desidera acquistare con gli invitati dell'evento.</item>
+        <item id="text_gr_desired_products" lang="el">Στην ενότητα αυτή μπορείτε να ορίσετε τα προϊόντα που επιθυμείτε να αγοραστούν από τους προσκεκλημένους της εκδήλωσης.</item>
+        <item id="text_gr_desired_products" lang="bg">В този раздел можете да определите продукти, които желаете да бъдат закупени от поканените на събитието.</item>
+        <item id="text_gr_desired_products" lang="ro">În această secțiune puteți defini produsele care doriți să fie achiziționate prin invitații.</item>
+        <item id="text_gr_desired_products" lang="sl">V tej sekciji lahko določite proizvode, za katere želite, da jih kupijo povabljenci dogodka.</item>
+        <item id="text_gr_desired_products" lang="no">I denne delen kan du definere produkter som du ønsker å bli kjøpt av begivenhetens inviterte.</item>
+        <item id="text_gr_desired_products" lang="da">I dette afsnit kan du definere produkter, som du ønsker at blive købt af begivenheden inviterede.</item>
+        <item id="text_gr_desired_products" lang="fr">Dans cette section vous pouvez définir les produits les que vous souhaitez faire acheter par les invités d'événement.</item>
+        <item id="text_gr_desired_products" lang="es">En esta sección usted puede definir productos que usted desea que peudan ser comprado por los invitados del evento.</item>
+
+        <item id="text_notification_to_inviteees" lang="en">In this section you can send notifications to the event invitees.</item>
+        <item id="text_notification_to_inviteees" lang="ru">В этом разделе Вы можете послать уведомления приглашенным на праздник.</item>
+        <item id="text_notification_to_inviteees" lang="zh">在这个区域您可以发送通知给事件受邀者.</item>
+        <item id="text_notification_to_inviteees" lang="it">Notifica degli inviti</item>
+        <item id="text_notification_to_inviteees" lang="el">Στην ενότητα αυτή μπορείτε να στείλετε τις κοινοποιήσεις στους προσκεκλημένους της εκδήλωσης.</item>
+        <item id="text_notification_to_inviteees" lang="bg">В този раздел можете да изпратите уведомление за събитието до поканените.</item>
+        <item id="text_notification_to_inviteees" lang="ro">În această secțiunea puteți trimite notificări invitațiilor.</item>
+        <item id="text_notification_to_inviteees" lang="sl">V tej sekciji lahko pošljete obvestila povabljencem na dogodek.</item>
+        <item id="text_notification_to_inviteees" lang="no">I denne seksjonen kan du sende meldinger til begivenhetens inviterte.</item>
+        <item id="text_notification_to_inviteees" lang="da">I dette afsnit kan du sende meddelelser til begivenheden inviterede.</item>
+        <item id="text_notification_to_inviteees" lang="fr">Dans cette section, vous pouvez envoyer des notifications d'évènements aux invités</item>
+        <item id="text_notification_to_inviteees" lang="es">En esta sección usted puede enviar notificaciones a los invitados del evento.</item>
+
+        <item id="text_remember_access_key" lang="en">Please remember the key to access this event</item>
+        <item id="text_remember_access_key" lang="ru">Пожалуйста, запомните код доступа к данному событию</item>
+        <item id="text_remember_access_key" lang="zh">请记住要访问此事件的密匙</item>
+        <item id="text_remember_access_key" lang="it">Perfavore ricorda la chiave d'accesso per questo evento</item>
+        <item id="text_remember_access_key" lang="el">Παρακαλώ θυμηθείτε το κλειδί για να έχετε πρόσβαση σε αυτή την εκδήλωση</item>
+        <item id="text_remember_access_key" lang="bg">Моля, не забравяйте клавиша за достъп до това събитие</item>
+        <item id="text_remember_access_key" lang="ro">Vă rugăm să rețineți cheia pentru a accesa acest eveniment</item>
+        <item id="text_remember_access_key" lang="sl">Prosimo zapomnite si ključ za dostop do tega dogodka</item>
+        <item id="text_remember_access_key" lang="no">Vennligst husk nøkkelen for adgang til denne begivenheten</item>
+        <item id="text_remember_access_key" lang="da">Husk nøglen til at få adgang til dette arrangement</item>
+        <item id="text_remember_access_key" lang="fr">Veuillez vous rappeler svp la clé d'accès pour cet évènement</item>
+        <item id="text_remember_access_key" lang="es">Por favor, recuerda la calve para acceder a este evento</item>
+
+        <item id="today_events" lang="en">Today's events</item>
+        <item id="today_events" lang="ru">Сегодняшние события</item>
+        <item id="today_events" lang="zh">当天事件</item>
+        <item id="today_events" lang="it">Eventi di oggi</item>
+        <item id="today_events" lang="el">Σημερινά γεγονότα</item>
+        <item id="today_events" lang="bg">Днешни събития</item>
+        <item id="today_events" lang="ro">Evenimentele de astăzi</item>
+        <item id="today_events" lang="sl">Današnji dogodki</item>
+        <item id="today_events" lang="no">Dagens begivenheter</item>
+        <item id="today_events" lang="da">Dagens begivenheder</item>
+        <item id="today_events" lang="fr">Les évènements d'aujourd'hui</item>
+        <item id="today_events" lang="es">Eventos de hoy</item>
+
+        <item id="text_get_access_key_notice" lang="en">If you don't know the access key, please enter your email address, and the key will be sent to you.</item>
+        <item id="text_get_access_key_notice" lang="ru">Если Вы не знаете код доступа, введите, пожалуйста, ваш e-mail, и Вам будет выслан код.</item>
+        <item id="text_get_access_key_notice" lang="zh">如果您不知道访问密匙，请输入您的电子邮件地址，密匙将会发送给你</item>
+        <item id="text_get_access_key_notice" lang="it">Se non si conosce la chiave di accesso, inserisci il tuo indirizzo e-mail, e la chiave verrà inviata a voi.</item>
+        <item id="text_get_access_key_notice" lang="el">Εάν δεν γνωρίζετε τον κωδικό πρόσβασης σας, παρακαλώ εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας, και ο κωδικός θα σας σταλεί.</item>
+        <item id="text_get_access_key_notice" lang="bg">За да проследите вашите FRIbetaling поръчки със софтуера на магазина, изпратете URL на вашият магазин на FRIbetaling поддръжката.</item>
+        <item id="text_get_access_key_notice" lang="ro">Dacă nu știți cheia de acces, vă rugăm să intorduceți adresa de e-mail și vă va fi trimisă pe e-mail.</item>
+        <item id="text_get_access_key_notice" lang="sl">Če ne poznate vašega dostopnega ključa, prosimo vnesite naslov vaše elektronske pošte in poslali vam ga bomo.</item>
+        <item id="text_get_access_key_notice" lang="no">Hvis du ikke kjenner adgangsnøkkelen, vennligst skriv din e-postadresse, og nøkkelen vil bli sendt til deg.</item>
+        <item id="text_get_access_key_notice" lang="da">Hvis du ikke kender adgang til nøglen, skal du indtaste din e-mail-adresse, og den vil blive sendt til dig.</item>
+        <item id="text_get_access_key_notice" lang="fr">Si vous ne connaissez pas la clé d'accès, veuillez saisir votre adresse email et elle vous sera renvoyée.</item>
+        <item id="text_get_access_key_notice" lang="es">Si usted no conoce su clave de acceso, por favor introduzca su dirección de E-mail y le será enviada su clave de acceso.</item>
+
+        <item id="access_key" lang="en">Access key</item>
+        <item id="access_key" lang="ru">Ключ доступа</item>
+        <item id="access_key" lang="zh">密匙</item>
+        <item id="access_key" lang="it">Chiave di accesso</item>
+        <item id="access_key" lang="el">Κλειδί πρόσβασης</item>
+        <item id="access_key" lang="bg">Ключ за достъп</item>
+        <item id="access_key" lang="ro">Cheie de acces</item>
+        <item id="access_key" lang="sl">Dostopni ključ</item>
+        <item id="access_key" lang="no">Adgangsnøkkel</item>
+        <item id="access_key" lang="da">Adgangsnøgle</item>
+        <item id="access_key" lang="fr">Clé d'accès</item>
+        <item id="access_key" lang="es">Clave de acceso</item>
+
+        <item id="get_access_key" lang="en">Get access key</item>
+        <item id="get_access_key" lang="ru">Получить ключ доступа</item>
+        <item id="get_access_key" lang="zh">获取访问密匙</item>
+        <item id="get_access_key" lang="it">Ottieni chiavi di accesso</item>
+
+        <item id="no_invitees_found" lang="en">No invitees found</item>
+        <item id="no_invitees_found" lang="ru">Приглашенные не найдены</item>
+        <item id="no_invitees_found" lang="zh">没有发现被邀请者</item>
+        <item id="no_invitees_found" lang="it">Nessun invito trovato</item>
+        <item id="no_invitees_found" lang="el">Δεν βρέθηκαν προσκεκλημένοι</item>
+        <item id="no_invitees_found" lang="bg">Няма намерени поканените</item>
+        <item id="no_invitees_found" lang="ro">Nu s-a găsit nici o invitație</item>
+        <item id="no_invitees_found" lang="sl">Ne najden nobenega povabljenca</item>
+        <item id="no_invitees_found" lang="no">Ingen inviterte funnet</item>
+        <item id="no_invitees_found" lang="da">Ingen inviterede fundet</item>
+        <item id="no_invitees_found" lang="fr">Aucun invité trouvé</item>
+        <item id="no_invitees_found" lang="es">Ningún invitado encontrado</item>
+
+        <item id="text_delete_recipients" lang="en">If you delete some invitees, click on the Update button to save the changes in the database</item>
+        <item id="text_delete_recipients" lang="ru">Если Вы удалили приглашение(я), нажмите кнопку \Изменить\ для сохранения изменений в базе данных</item>
+        <item id="text_delete_recipients" lang="zh">如果您删除了部分邀请，点击更新按钮保存并更新数据库</item>
+        <item id="text_delete_recipients" lang="it">Se si elimina alcuni invitati, fare clic sul pulsante Aggiorna per salvare le modifiche nel database</item>
+        <item id="text_delete_recipients" lang="el">Αν διαγράψετε κάποιους προσκεκλημένους, κάντε κλικ στο κουμπί Ενημέρωση για να αποθηκεύσετε τις αλλαγές στη βάση δεδομένων</item>
+        <item id="text_delete_recipients" lang="bg">Ако изтриете някои от поканените, кликнете върху бутона за актуализация за да запазите промените в базата данни</item>
+        <item id="text_delete_recipients" lang="ro">Dacă șterge unele invitații, faceți click pe butonul de Actualizare pentru a salva modificările în baza de date</item>
+        <item id="text_delete_recipients" lang="sl">Če izbrišete nekatere povabljence, kliknite na gumb Osveži in sprememba bo shranjena v bazo podatkov</item>
+        <item id="text_delete_recipients" lang="no">Hvis du sletter noen inviterte, klikk på Oppdater for å lagre endringene i databasen</item>
+        <item id="text_delete_recipients" lang="da">Hvis du slette nogle gæster, skal du klikke på knappen Opdater for at gemme ændringerne i databasen</item>
+        <item id="text_delete_recipients" lang="fr">Si vous supprimez certains invités, cliquez sur le bouton Mise à jour pour enregistrer les changements dans la base de données</item>
+        <item id="text_delete_recipients" lang="es">Si usted suprime a algunos invitados, haga click en el botón de Actualización para salvar los cambios en la base de datos</item>
+
+        <item id="gift_registry_unsubscribe" lang="en">Unsubscribe</item>
+        <item id="gift_registry_unsubscribe" lang="ru">Отменить подписку</item>
+        <item id="gift_registry_unsubscribe" lang="zh">取消订阅</item>
+        <item id="gift_registry_unsubscribe" lang="it">Disiscrivi</item>
+        <item id="gift_registry_unsubscribe" lang="el">Ανίκανος εγράφης</item>
+        <item id="gift_registry_unsubscribe" lang="bg">Отписване</item>
+        <item id="gift_registry_unsubscribe" lang="ro">Dezabonare</item>
+        <item id="gift_registry_unsubscribe" lang="sl">Odnaroči</item>
+        <item id="gift_registry_unsubscribe" lang="no">Stopp abonnement</item>
+        <item id="gift_registry_unsubscribe" lang="da">Afmeld</item>
+        <item id="gift_registry_unsubscribe" lang="fr">Se désabonner</item>
+        <item id="gift_registry_unsubscribe" lang="es">No suscribir</item>
+
         <item lang="en" id="private_events">Private events</item>
         <item lang="ru" id="private_events">Личные события</item>
         <item lang="zh" id="private_events">私人事件</item>
