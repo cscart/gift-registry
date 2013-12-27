@@ -1,0 +1,1 @@
+{include file="addons/discussion/views/discussion_manager/components/discussion.tpl" object_company_id=$event_data.company_id}
